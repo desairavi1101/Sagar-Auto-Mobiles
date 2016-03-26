@@ -1,0 +1,14 @@
+﻿.invoice-details {
+    width:100%;
+}
+@media only print {
+    .no-print {
+        display: none;
+    }
+
+    .container {
+        width: 90%;
+        margin-left:5%;
+        margin-right:5%;
+    }
+}

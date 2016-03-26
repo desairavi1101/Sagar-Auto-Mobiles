@@ -15,16 +15,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="assets/css/material.css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css" />
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="assets/css/theme.css" />
     
 </head>
 <body>
 
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
+        <header class="mdl-layout__header no-print">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
-                <span class="mdl-layout-title">Title</span>
+                <span class="mdl-layout-title">Sagar Auto Parts</span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
@@ -36,8 +39,8 @@
                 </nav>
             </div>
         </header>
-        <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Sagar Automobiles</span>
+        <div class="mdl-layout__drawer no-print">
+            <span class="mdl-layout-title">Sagar Auto Parts</span>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="">Retailer Invoice</a>
                 <a class="mdl-navigation__link" href="">WholeSaler Invoice</a>
@@ -50,7 +53,83 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1>Hello world</h1>
+                            <h1 class="no-print">Retailer Invoice</h1>
+                            <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric" colspan="4"><h4>Sagar Auto Parts Sales and Services</h4></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric" colspan="4">Address Line 1,<br />Address Line 2<br />Phone: 079-26577569</th>
+                                    </tr> 
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="mdl-data-table__cell--non-numeric">Name</td>
+                                        <td class="mdl-data-table__cell--non-numeric">Dhaval Shah</td>
+                                        <td class="mdl-data-table__cell--non-numeric">Date</td>
+                                        <td class="mdl-data-table__cell--non-numeric">26/03/2015</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="mdl-data-table__cell--non-numeric">Vehicle Type </td>
+                                        <td class="mdl-data-table__cell--non-numeric">2 Wheeler</td>
+                                        <td class="mdl-data-table__cell--non-numeric">Kms</td>
+                                        <td class="mdl-data-table__cell--non-numeric">16000</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="mdl-data-table__cell--non-numeric">Vehicle Numer </td>
+                                        <td class="mdl-data-table__cell--non-numeric">GJ-01-LJ-6633</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No.</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Particulars</th>
+                                        <th>Quantity</th>
+                                        <th>Unit price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
+                                        <td>25</td>
+                                        <td>$2.50</td>
+                                        <td>$62.50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
+                                        <td>50</td>
+                                        <td>$1.25</td>
+                                        <td>$62.50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
+                                        <td>10</td>
+                                        <td>$2.35</td>
+                                        <td>$23.50</td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th class="mdl-data-table__cell--non-numeric" colspan="3">Grand Total</th>
+                                        <th>$200.00</th>
+                                    </tr>
+
+                                    <tr>
+                                        
+                                        <td class="mdl-data-table__cell--non-numeric" colspan="4">Logo1 Logo2 Logo3</td>
+                                        <td>For Sagar Auto.&nbsp;<br />&nbsp;<br />&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -58,11 +137,10 @@
         </main>
     </div>
     <!-- JavaScript Rerefences-->
-
     <!-- Bootstrap -->
     <script src="assets/js/jquery-1.12.2.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    
+
     <!--MDL-->
     <script defer src="assets/js/material.js"></script>
 </body>
