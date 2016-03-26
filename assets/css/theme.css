@@ -1,6 +1,10 @@
 ﻿.invoice-details {
     width:100%;
 }
+
+.row {
+    margin-bottom:10px;
+}
 @media only print {
     .no-print {
         display: none;
@@ -10,5 +14,16 @@
         width: 90%;
         margin-left:5%;
         margin-right:5%;
+    }
+    td,th {
+        padding: 4px !important;
+        height: auto !important;
+    }
+
+    tr > td:last-child, tr > th:last-child {
+        padding-right: 10px !important;
+    }
+    tr {
+        height: auto !important;
     }
 }
