@@ -23,6 +23,10 @@
     tr > td:last-child, tr > th:last-child {
         padding-right: 10px !important;
     }
+
+    tr > td:first-child, tr > th:first-child {
+        padding-left: 10px !important;
+    }
     tr {
         height: auto !important;
     }
