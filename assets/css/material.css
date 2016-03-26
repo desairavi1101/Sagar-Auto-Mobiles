@@ -9825,7 +9825,9 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     -webkit-appearance: none;
     margin: 0; }
   .mdl-textfield.is-focused .mdl-textfield__input {
-    outline: none; }
+    outline: none;
+    border-bottom: none;
+  }
   .mdl-textfield.is-invalid .mdl-textfield__input {
     border-color: rgb(213,0,0);
     box-shadow: none; }
