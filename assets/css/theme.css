@@ -44,4 +44,8 @@
     tr {
         height: auto !important;
     }
+
+    input {
+        border: none !important;
+    }
 }
