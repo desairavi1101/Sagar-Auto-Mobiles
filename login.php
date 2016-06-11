@@ -1,5 +1,5 @@
 ﻿<?php
-    session_start();
+    require 'session.php';
     require 'db.php';
     if(isset($_POST["login"])) {
         $query = "SELECT * FROM admin WHERE Email=? AND Password=?";
@@ -77,6 +77,16 @@
                                         <h2 class="mdl-card__title-text">Welcome Admin !!!</h2>
                                     </div>
                                     <div class="mdl-card__supporting-text">
+                                        <?php
+                                            if(isset($error)) {
+                                            ?>
+                                        <div class="alert alert-danger">
+                                            <?php echo $error; ?>
+                                        </div>
+                                            <?php
+                                            }
+                                        ?>
+                                        
                                         <div>
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                                 <input name="email" class="mdl-textfield__input" type="text" id="Email" required>
