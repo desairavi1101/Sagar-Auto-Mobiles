@@ -19,6 +19,10 @@
 .demo-card-wide > .mdl-card__menu {
     color: #fff;
 }
+.mdl-tabs__tab-bar a:hover,.mdl-tabs__tab-bar a:focus {
+    text-decoration: none !important; 
+}
+
 @media only print {
     .no-print {
         display: none;
