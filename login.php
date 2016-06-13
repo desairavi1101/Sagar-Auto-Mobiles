@@ -1,11 +1,11 @@
 ﻿<?php
     require 'session.php';
     require 'db.php';
-    if(isset($_POST["login"])) {
+    if(isset($_POST["Login"])) {
         $query = "SELECT * FROM admin WHERE Email=? AND Password=?";
         
-        $email = $_REQUEST["email"];
-        $password = $_REQUEST["password"];
+        $email = $_REQUEST["Email"];
+        $password = $_REQUEST["Password"];
 
         $stmt = $db->prepare($query);
         $stmt->execute(array($email,$password));
@@ -89,19 +89,19 @@
                                         
                                         <div>
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                                <input name="email" class="mdl-textfield__input" type="text" id="Email" required>
+                                                <input name="Email" class="mdl-textfield__input" type="text" id="Email" required>
                                                 <label class="mdl-textfield__label" for="Email">Email</label>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                                <input name="password" class="mdl-textfield__input" type="password" id="Password" required>
+                                                <input name="Password" class="mdl-textfield__input" type="password" id="Password" required>
                                                 <label class="mdl-textfield__label" for="Password">Password</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
-                                        <button name="login" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect pull-right no-print">
+                                        <button name="Login" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect pull-right no-print">
                                             Get Started
                                         </button>
                                     </div>

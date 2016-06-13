@@ -29,101 +29,85 @@
 
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header no-print">
-            <div class="mdl-layout__header-row">
-                <!-- Title -->
-                <span class="mdl-layout-title">Sagar Auto Parts</span>
-                <!-- Add spacer, to align navigation to the right -->
-                <div class="mdl-layout-spacer"></div>
-                <!-- Navigation. We hide it in small screens. -->
-                <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href="">Retailer Invoice</a>
-                    <a class="mdl-navigation__link" href="">WholeSaler Invoice</a>
-                    <a class="mdl-navigation__link" href="">Search</a>
-                    <a class="mdl-navigation__link" href="">Logout</a>
-                </nav>
-            </div>
-        </header>
-        <div class="mdl-layout__drawer no-print">
-            <span class="mdl-layout-title">Sagar Auto Parts</span>
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Retailer Invoice</a>
-                <a class="mdl-navigation__link" href="">WholeSaler Invoice</a>
-                <a class="mdl-navigation__link" href="">Search</a>
-                <a class="mdl-navigation__link" href="">Logout</a>
-            </nav>
-        </div>
+        
+        <?php
+            include 'navigation.php';
+        ?>
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="no-print">Retailer Invoice</h2>
-                            <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
-                                <tbody>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric">Name</td>
-                                        <td class="mdl-data-table__cell--non-numeric">
-                                            <div class="mdl-textfield mdl-js-textfield">
-                                                <input class="mdl-textfield__input" type="text" id="Name">
-                                                <label class="mdl-textfield__label" for="Name">Name</label>
-                                            </div>
-                                        </td>
-                                        <td class="mdl-data-table__cell--non-numeric">Date</td>
-                                        <td class="mdl-data-table__cell--non-numeric">
-                                            <div class="mdl-textfield mdl-js-textfield">
-                                                <input class="mdl-textfield__input" type="date" id="Date">
-                                                <label class="mdl-textfield__label" for="Date"></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric">Mobile Numer </td>
-                                        <td class="mdl-data-table__cell--non-numeric">
-                                            <div class="mdl-textfield mdl-js-textfield">
-                                                <input class="mdl-textfield__input" type="tel" id="Mobile">
-                                                <label class="mdl-textfield__label" for="Mobile">Mobile</label>
-                                            </div>
-                                        </td>
-                                        <td class="mdl-data-table__cell--non-numeric">Vehicle Type </td>
-                                        <td class="mdl-data-table__cell--non-numeric">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                                              <input class="mdl-textfield__input" value="2 Wheeler" type="text" id="VehicleType" readonly tabIndex="-1" data-val="2 Wheeler"/>
-                                                
-                                                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="VehicleType">
-                                                  <li class="mdl-menu__item" data-val="2 Wheeler">2 Wheeler</li>
-                                                  <li class="mdl-menu__item" data-val="2 Wheeler">4 Wheeler</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
+                    <form method="POST" action="addinvoice.php">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="no-print">Retailer Invoice</h2>
+                                <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
+                                    <tbody>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Name</td>
+                                            <td class="mdl-data-table__cell--non-numeric">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input name="Name" class="mdl-textfield__input" type="text" id="Name" required>
+                                                    <label class="mdl-textfield__label" for="Name">Name</label>
+                                                </div>
+                                            </td>
+                                            <td class="mdl-data-table__cell--non-numeric">Date</td>
+                                            <td class="mdl-data-table__cell--non-numeric">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input name="InvoiceDate" class="mdl-textfield__input" type="date" id="Date" required>
+                                                    <label class="mdl-textfield__label" for="Date"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Mobile Numer </td>
+                                            <td class="mdl-data-table__cell--non-numeric">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input name="MobileNo" class="mdl-textfield__input" type="tel" id="Mobile">
+                                                    <label class="mdl-textfield__label" for="Mobile">Mobile</label>
+                                                </div>
+                                            </td>
+                                            <td class="mdl-data-table__cell--non-numeric">Vehicle Type </td>
+                                            <td class="mdl-data-table__cell--non-numeric">
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                                                  <input name="VehicleType" class="mdl-textfield__input" value="2 Wheeler" type="text" id="VehicleType" readonly tabIndex="-1" data-val="2 Wheeler"/>
+                                                    
+                                                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="VehicleType">
+                                                      <li class="mdl-menu__item" data-val="2 Wheeler">2 Wheeler</li>
+                                                      <li class="mdl-menu__item" data-val="2 Wheeler">4 Wheeler</li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric">Vehicle Numer </td>
-                                        <td class="mdl-data-table__cell--non-numeric">
-                                            <div class="mdl-textfield mdl-js-textfield">
-                                                <input class="mdl-textfield__input" type="text" id="VehicleNumber">
-                                                <label class="mdl-textfield__label" for="VehicleNumber">Vehicle Number</label>
-                                            </div>
-                                        </td>
-                                        <td class="mdl-data-table__cell--non-numeric">Kms</td>
-                                        <td class="mdl-data-table__cell--non-numeric">
-                                            <div class="mdl-textfield mdl-js-textfield">
-                                                <input class="mdl-textfield__input" type="number" id="Kms">
-                                                <label class="mdl-textfield__label" for="Kms">Kms</label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Vehicle Numer </td>
+                                            <td class="mdl-data-table__cell--non-numeric">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input name="VehicleNo" class="mdl-textfield__input" type="text" id="VehicleNo">
+                                                    <label class="mdl-textfield__label" for="VehicleNo">Vehicle Number</label>
+                                                </div>
+                                            </td>
+                                            <td class="mdl-data-table__cell--non-numeric">Kms</td>
+                                            <td class="mdl-data-table__cell--non-numeric">
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input name="Kms" class="mdl-textfield__input" type="number" id="Kms">
+                                                    <label class="mdl-textfield__label" for="Kms">Kms</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button id="next_btn" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right no-print">Next</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button id="clear_btn" type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored pull-left no-print">Clear</button>
+                                <button name="Next" id="next_btn" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent pull-right no-print">Next</button>
+                            </div>
+                            <input type="hidden" name="InvoiceType" value="Retailer">
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </main>
