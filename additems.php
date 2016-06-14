@@ -1,6 +1,5 @@
 <?php
     require 'checkSession.php';
-    print_r($_GET);
     if(!isset($_GET["InvoiceId"])) {
     	header("Location: dashboard.php");
     } else {
