@@ -19,6 +19,8 @@
         $stmt->execute(array($name,$mobile_no,$vehicle_type,$vehicle_no,$invoice_date,$kms,$address,$invoice_type));
 
         $invoice_id = $db->lastInsertId();
-        echo $invoice_id;
+
+        header("Location: additems.php?InvoiceId=$invoice_id");
+        
     }
 ?>
