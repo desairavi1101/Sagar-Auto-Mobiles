@@ -1,10 +1,26 @@
 <?php
     require 'checkSession.php';
+    require 'db.php';
     if(!isset($_GET["InvoiceId"])) {
     	header("Location: dashboard.php");
     } else {
     	$invoice_id = $_GET["InvoiceId"];
-    	/*TODO: Retrive Invoice data by ID*/
+
+    	$query = "SELECT * FROM Invoice WHERE Id=?";
+    	$stmt = $db->prepare($query);
+        $stmt->execute(array($invoice_id));
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if(count($rows) > 0) {
+        	$invoice = $rows[0];
+
+        	$query = "SELECT * FROM InvoiceDetails WHERE InvoiceId=?";
+        	$stmt = $db->prepare($query);
+        	$stmt->execute(array($invoice_id));
+        	$items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else {
+        	header("Location: dashboard.php");
+        }
     }
 ?>
 
@@ -44,38 +60,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="no-print">Retailer Invoice</h2>
-                            <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
-                                <thead>
-                                    <tr>
-                                        <th class="mdl-data-table__cell--non-numeric" colspan="4"><h4>Sagar Auto Parts Sales and Services</h4></th>
-                                    </tr>
-                                    <tr>
-                                        <th class="mdl-data-table__cell--non-numeric" colspan="4">GF/12 Dev Archan, Opp Marshall Hotel<br />Near Bonny Travels, Paldi cross road,<br/>Paldi, Ahmebadad<br />Phone: 079-26577569</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric">Name</td>
-                                        <td class="mdl-data-table__cell--non-numeric">Dhaval Shah</td>
-                                        <td class="mdl-data-table__cell--non-numeric">Date</td>
-                                        <td class="mdl-data-table__cell--non-numeric">26/03/2015</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric">Mobile Numer </td>
-                                        <td class="mdl-data-table__cell--non-numeric">+91-8460295849</td>
-                                        <td class="mdl-data-table__cell--non-numeric">Vehicle Type </td>
-                                        <td class="mdl-data-table__cell--non-numeric">2 Wheeler</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric">Vehicle Numer </td>
-                                        <td class="mdl-data-table__cell--non-numeric">GJ-01-LJ-6633</td>
-                                        <td class="mdl-data-table__cell--non-numeric">Kms</td>
-                                        <td class="mdl-data-table__cell--non-numeric">16000</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <h2 class="no-print"><?php echo $invoice["InvoiceType"] ?> Invoice</h2>
+                            <?php 
+                            	if($invoice["InvoiceType"] == "Retailer") {
+                            		include 'views/retailerHeader.php';	
+                            	}
+                            	else {
+                            		include 'views/wholesellerHeader.php';
+                            	}
+                            	
+                            ?>
                             <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
                                 <thead>
                                     <tr>
@@ -87,35 +81,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-                                        <td>25</td>
-                                        <td>$2.50</td>
-                                        <td>$62.50</td>
+                                	<?php 
+                                		$total = 0;
+
+                                		for($i=0; $i < count($items) ; $i++) {
+                                			$item = $items[$i];
+                                			$total += $item["Quantity"] * $item["Price"];
+                                			?>
+                                	<tr>
+                                        <td><?php echo ($i+1)?></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><?php echo $item["ItemName"] ?></td>
+                                        <td><?php echo $item["Quantity"] ?></td>
+                                        <td>&#8377; <?php echo $item["Price"] ?></td>
+                                        <td>&#8377; <?php echo $item["Quantity"] * $item["Price"] ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-                                        <td>50</td>
-                                        <td>$1.25</td>
-                                        <td>$62.50</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                                        <td>10</td>
-                                        <td>$2.35</td>
-                                        <td>$23.50</td>
-                                    </tr>
+                                			<?php
+                                		}
+                                	?>
+                                    
                                     <tr>
                                         <th></th>
                                         <th class="mdl-data-table__cell--non-numeric" colspan="3">Grand Total</th>
-                                        <th>$200.00</th>
+                                        <th>&#8377; <?php echo $total ?></th>
                                     </tr>
 
                                     <tr>
-
                                         <td class="mdl-data-table__cell--non-numeric" colspan="4">Logo1 Logo2 Logo3</td>
                                         <td>For Sagar Auto.&nbsp;<br />&nbsp;<br />&nbsp;</td>
                                     </tr>
