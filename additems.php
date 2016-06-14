@@ -4,8 +4,23 @@
     if(!isset($_GET["InvoiceId"])) {
     	header("Location: dashboard.php");
     } else {
-    	$invoice_id = $_GET["InvoiceId"];
 
+    	$query = "SELECT * FROM Item";
+    	$stmt = $db->prepare($query);
+        $stmt->execute(array());
+        $wholeseller_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    	$invoice_id = $_REQUEST["InvoiceId"];
+    	if(isset($_POST["Add"])) {
+    		$item_name = $_REQUEST["ItemName"];
+    		$price = $_REQUEST["Price"];
+    		$quantity = $_REQUEST["Quantity"];
+
+    		$query = "INSERT INTO InvoiceDetails (InvoiceId,ItemName,Quantity,Price) VALUES (?,?,?,?)";
+    		$stmt = $db->prepare($query);
+        	$stmt->execute(array($invoice_id,$item_name,$quantity,$price));
+
+    	}
     	$query = "SELECT * FROM Invoice WHERE Id=?";
     	$stmt = $db->prepare($query);
         $stmt->execute(array($invoice_id));
@@ -70,47 +85,104 @@
                             	}
                             	
                             ?>
-                            <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
-                                <thead>
-                                    <tr>
-                                        <th>Sr No.</th>
-                                        <th class="mdl-data-table__cell--non-numeric">Particulars</th>
-                                        <th>Quantity</th>
-                                        <th>Unit price</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                	<?php 
-                                		$total = 0;
+                            <form method="POST" action="<?php echo $_SERVER['REQUEST_URI'] ?>">
+	                            <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
+	                                <thead>
+	                                    <tr>
+	                                        <th>Sr No.</th>
+	                                        <th class="mdl-data-table__cell--non-numeric">Particulars</th>
+	                                        <th>Quantity</th>
+	                                        <th>Unit price</th>
+	                                        <th>Total</th>
+	                                    </tr>
+	                                </thead>
+	                                <tbody>
+	                                	<?php 
+	                                		$total = 0;
 
-                                		for($i=0; $i < count($items) ; $i++) {
-                                			$item = $items[$i];
-                                			$total += $item["Quantity"] * $item["Price"];
-                                			?>
-                                	<tr>
-                                        <td><?php echo ($i+1)?></td>
-                                        <td class="mdl-data-table__cell--non-numeric"><?php echo $item["ItemName"] ?></td>
-                                        <td><?php echo $item["Quantity"] ?></td>
-                                        <td>&#8377; <?php echo $item["Price"] ?></td>
-                                        <td>&#8377; <?php echo $item["Quantity"] * $item["Price"] ?></td>
-                                    </tr>
-                                			<?php
-                                		}
-                                	?>
-                                    
-                                    <tr>
-                                        <th></th>
-                                        <th class="mdl-data-table__cell--non-numeric" colspan="3">Grand Total</th>
-                                        <th>&#8377; <?php echo $total ?></th>
-                                    </tr>
+	                                		for($i=0; $i < count($items) ; $i++) {
+	                                			$item = $items[$i];
+	                                			$total += $item["Quantity"] * $item["Price"];
+	                                			?>
+	                                	<tr>
+	                                        <td><?php echo ($i+1)?></td>
+	                                        <td class="mdl-data-table__cell--non-numeric"><?php echo $item["ItemName"] ?></td>
+	                                        <td><?php echo $item["Quantity"] ?></td>
+	                                        <td>&#8377; <?php echo $item["Price"] ?></td>
+	                                        <td>&#8377; <?php echo $item["Quantity"] * $item["Price"] ?></td>
+	                                    </tr>
+	                                			<?php
+	                                		}
+	                                	?>
 
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric" colspan="4">Logo1 Logo2 Logo3</td>
-                                        <td>For Sagar Auto.&nbsp;<br />&nbsp;<br />&nbsp;</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+	                                	<tr class="no-print">
+	                                        <td><?php echo ($i+1)?></td>
+	                                        <td class="invoice-item-input mdl-data-table__cell--non-numeric"> 
+	                                        	<?php 
+	                                        		if($invoice["InvoiceType"] == "Retailer") {
+	                                        			?>
+	                                        	<div class="mdl-textfield mdl-js-textfield">
+												    <input name="ItemName" class="mdl-textfield__input" type="text" id="ItemName" required>
+												    <label class="mdl-textfield__label" for="ItemName">Item Name</label>
+												</div>
+	                                        			<?php
+	                                        		}
+	                                        		else {
+	                                        			$first_item = $wholeseller_items[0]["ItemName"];
+	                                        			?>
+	                                        	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                                                    <input name="ItemName" class="mdl-textfield__input" 
+                                                    value="<?php echo $first_item ?>" type="text" id="ItemName" readonly tabIndex="-1" data-val="<?php echo $first_item ?>"/>
+                                                    
+                                                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="ItemName">
+                                                    	<?php 
+                                                    		for($j=0;$j < count($wholeseller_items); $j++) {
+                                                    			$item = $wholeseller_items[$j];
+                                                    			?>
+                                                    	<li class="mdl-menu__item" data-val="<?php echo $item["ItemName"]?>"> <?php echo $item["ItemName"]?></li>
+                                                    			<?php
+                                                    		}
+                                                    	?>
+                                                
+                                                    </ul>
+                                                </div>
+	                                        			<?php
+	                                        		}
+	                                        	?>
+	                                        	
+	                                        </td>
+	                                        <td>
+	                                        	<div class="invoice-item-input mdl-textfield mdl-js-textfield">
+												    <input name="Quantity" class="mdl-textfield__input" type="number" id="Quantity" required>
+												    <label class="mdl-textfield__label" for="Quantity">Quantity</label>
+												</div>
+	                                        </td>
+	                                        <td>
+	                                        	<div class="invoice-item-input mdl-textfield mdl-js-textfield">
+												    <input name="Price" class="mdl-textfield__input" type="number" id="Quantity" required>
+												    <label class="mdl-textfield__label" for="Price">Price</label>
+												</div>
+	                                        </td>
+	                                        <td>
+	                                        	<button name="Add" value="Add" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect pull-right no-print">
+	                                            Add
+	                                        	</button>
+	                                        </td>
+	                                    </tr>
+	                                    
+	                                    <tr>
+	                                        <th></th>
+	                                        <th class="mdl-data-table__cell--non-numeric" colspan="3">Grand Total</th>
+	                                        <th>&#8377; <?php echo $total ?></th>
+	                                    </tr>
+
+	                                    <tr>
+	                                        <td class="mdl-data-table__cell--non-numeric" colspan="4">Logo1 Logo2 Logo3</td>
+	                                        <td>For Sagar Auto.&nbsp;<br />&nbsp;<br />&nbsp;</td>
+	                                    </tr>
+	                                </tbody>
+	                            </table>
+                            </form>
                         </div>
                     </div>
 

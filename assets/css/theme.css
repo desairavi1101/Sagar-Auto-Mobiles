@@ -23,6 +23,10 @@
     text-decoration: none !important; 
 }
 
+.invoice-item-input {
+    width: auto !important; 
+}
+
 @media only print {
     .no-print {
         display: none;
