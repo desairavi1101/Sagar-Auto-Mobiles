@@ -55,7 +55,6 @@
     <!-- MDL -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="assets/css/material.css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css" />
     <link rel="stylesheet" href="assets/css/getmdl-select.min.css" />
 
     <!-- Custom CSS-->

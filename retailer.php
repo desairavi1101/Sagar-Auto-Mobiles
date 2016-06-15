@@ -18,7 +18,6 @@
     <!-- MDL -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="assets/css/material.css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css" />
     <link rel="stylesheet" href="assets/css/getmdl-select.min.css" />
 
     <!-- Custom CSS-->
@@ -69,7 +68,7 @@
                                             <td class="mdl-data-table__cell--non-numeric">Vehicle Type </td>
                                             <td class="mdl-data-table__cell--non-numeric">
                                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                                                  <input name="VehicleType" class="mdl-textfield__input" value="2 Wheeler" type="text" id="VehicleType" readonly tabIndex="-1" data-val="2 Wheeler"/>
+                                                    <input name="VehicleType" class="mdl-textfield__input" value="2 Wheeler" type="text" id="VehicleType" readonly tabIndex="-1" data-val="2 Wheeler"/>
                                                     
                                                     <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="VehicleType">
                                                       <li class="mdl-menu__item" data-val="2 Wheeler">2 Wheeler</li>

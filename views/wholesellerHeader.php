@@ -1,6 +1,10 @@
                                 <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
                                     <thead>
                                         <tr>
+                                            <th colspan="3">Invoice No:</th>
+                                            <th class="mdl-data-table__cell--non-numeric"><?php echo $invoice["Id"]?></th>
+                                        </tr>
+                                        <tr>
                                             <th class="mdl-data-table__cell--non-numeric" colspan="4"><h4>Sagar Auto Parts Sales and Services</h4></th>
                                         </tr>
                                         <tr>
