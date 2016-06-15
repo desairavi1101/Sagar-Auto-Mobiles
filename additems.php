@@ -176,7 +176,12 @@
 	                                    </tr>
 
 	                                    <tr>
-	                                        <td class="mdl-data-table__cell--non-numeric" colspan="4">Logo1 Logo2 Logo3</td>
+	                                        <td class="mdl-data-table__cell--non-numeric" colspan="4">
+                                                <img src="assets/img/hero-logo.png" height="50px">
+                                                <img src="assets/img/bajaj-logo.png" height="50px">
+                                                <img src="assets/img/tvs-logo.png" height="50px">
+                                                <img src="assets/img/honda-logo.png" height="50px">
+                                           </td>
 	                                        <td>For Sagar Auto.&nbsp;<br />&nbsp;<br />&nbsp;</td>
 	                                    </tr>
 	                                </tbody>
