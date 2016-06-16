@@ -1,8 +1,8 @@
 <?php
 
 define('DB_SERVER','localhost');
-define('DB_SERVER_USERNAME','root');
-define('DB_SERVER_PASSWORD','');
+define('DB_SERVER_USERNAME','sagar_user');
+define('DB_SERVER_PASSWORD','sagar_password');
 define('DB_DATABASE','sagar-auto-parts');
 
 
