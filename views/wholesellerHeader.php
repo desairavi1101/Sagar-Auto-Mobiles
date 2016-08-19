@@ -1,7 +1,7 @@
                                 <table class="invoice-details mdl-data-table  mdl-shadow--2dp">
                                     <thead>
                                         <tr>
-                                            <th colspan="3">Invoice No:</th>
+                                            <th colspan="3">Estimate No:</th>
                                             <th class="mdl-data-table__cell--non-numeric"><?php echo $invoice["Id"]?></th>
                                         </tr>
                                         <tr>
