@@ -214,6 +214,8 @@
             $("#print_btn").click(function (e) {
                 window.print();
             });
+
+	$("input[name='ItemName']").focus();
         });
     </script>
 </body>
