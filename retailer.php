@@ -67,13 +67,9 @@
                                             </td>
                                             <td class="mdl-data-table__cell--non-numeric">Vehicle Type </td>
                                             <td class="mdl-data-table__cell--non-numeric">
-                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-                                                    <input name="VehicleType" class="mdl-textfield__input" value="2 Wheeler" type="text" id="VehicleType" readonly tabIndex="-1" data-val="2 Wheeler"/>
-                                                    
-                                                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="VehicleType">
-                                                      <li class="mdl-menu__item" data-val="2 Wheeler">2 Wheeler</li>
-                                                      <li class="mdl-menu__item" data-val="2 Wheeler">4 Wheeler</li>
-                                                    </ul>
+                                                <div class="mdl-textfield mdl-js-textfield">
+                                                    <input name="VehicleType" class="mdl-textfield__input" type="text" id="VehicleNo">
+                                                    <label class="mdl-textfield__label" for="VehicleType">Vehicle Type</label>
                                                 </div>
                                             </td>
                                         </tr>
