@@ -19,7 +19,7 @@
 .demo-card-wide > .mdl-card__menu {
     color: #fff;
 }
-.mdl-tabs__tab-bar a:hover,.mdl-tabs__tab-bar a:focus {
+.mdl-tabs__tab-bar a:hover,.mdl-tabs__tab-bar a:focus, a.mdl-button:focus, a.mdl-button:hover {
     text-decoration: none !important; 
 }
 
