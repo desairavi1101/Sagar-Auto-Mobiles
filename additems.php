@@ -72,7 +72,7 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" id="InvoiceRow">
                         <div class="col-md-12">
                             <h2 class="no-print"><?php echo $invoice["InvoiceType"] ?> Invoice</h2>
                             <?php 

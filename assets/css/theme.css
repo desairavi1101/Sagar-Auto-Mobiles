@@ -1,4 +1,4 @@
-﻿.invoice-details {
+.invoice-details {
     width:100%;
 }
 
@@ -30,6 +30,8 @@
 @media only print {
     .no-print {
         display: none;
+        margin: 0px;
+        padding: 0px;
     }
 
     .container {
@@ -55,5 +57,10 @@
 
     input {
         border: none !important;
+    }
+    #InvoiceRow {
+        position: absolute;
+        top: 50px;
+        width:89%;
     }
 }
